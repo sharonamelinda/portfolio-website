@@ -9,6 +9,9 @@
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+    {{-- Animate On Scroll JS Library --}}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     {{-- Alpine JS --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -138,7 +141,7 @@
             </div>
 
             {{-- Services --}}
-            <div class="mx-auto max-w-4xl py-6">
+            <div class="mx-auto max-w-4xl py-6" data-aos="fade-right">
                 <div class="text-center font-bold text-4xl text-blacky my-4">
                     Services
                 </div>
@@ -174,7 +177,7 @@
             </div>
 
             {{-- Project Showcase --}}
-            <div class="mx-auto max-w-4xl py-6">
+            <div class="mx-auto max-w-4xl py-6" data-aos="fade-right">
                 <div class="text-center font-bold text-4xl text-blacky my-4">
                     Project Showcase
                 </div>
@@ -243,7 +246,7 @@
             </div>
 
             {{-- Work History --}}
-            <div class="mx-auto max-w-4xl py-6">
+            <div class="mx-auto max-w-4xl py-6" data-aos="fade-right">
                 <div class="text-center font-bold text-4xl text-blacky my-4">
                     Work History
                 </div>
@@ -314,6 +317,11 @@
             <x-polygon-two></x-polygon-two>
         </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 
 </html>
