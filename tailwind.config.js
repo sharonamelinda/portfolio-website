@@ -4,6 +4,7 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    'node_modules/preline/dist/*.js',
   ],
   darkMode: 'class',
   theme: {
@@ -15,7 +16,11 @@ export default {
         'brokenw' : '#fffbdb',
         'oren' : '#e5771d',
         'goldie-b' : '#625834',
-      }
+        'bluedark' : '#1d2f6f',
+        'bluelight' : '#8390fa',
+        'yellowlight' : '#fac748',
+        'lightopacitypink' : '#f9e9ec',
+      },
     },
     fontFamily: {
       'body': [
@@ -52,6 +57,8 @@ export default {
   ],
     }
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+  ],
 }
 
