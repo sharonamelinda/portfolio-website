@@ -14,9 +14,10 @@ class Skill extends Model
     protected $fillable = ['name','slug','skill_category_id'];
 
     public function setNameAttribute($value)
-    {
-        $this->attributes['slug'] = Str::slug($value);
-    }
+{
+    $this->attributes['name'] = $value;
+    $this->attributes['slug'] = Str::slug($value);
+}
 
     public function skill_category(): BelongsTo
     {

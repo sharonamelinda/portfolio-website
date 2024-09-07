@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class SkillCategory extends Model
+class ProjectCategory extends Model
 {
     use HasFactory;
 
@@ -15,12 +15,12 @@ class SkillCategory extends Model
 
     public function setNameAttribute($value)
 {
-    $this->attributes['name'] = $value; 
-    $this->attributes['slug'] = Str::slug($value); 
+    $this->attributes['name'] = $value;
+    $this->attributes['slug'] = Str::slug($value);
 }
 
-    public function skill(): HasMany
+    public function project(): HasMany
     {
-        return $this->hasMany(Skill::class);
+        return $this->hasMany(Project::class);
     }
 }

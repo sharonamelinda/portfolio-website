@@ -16,6 +16,11 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Nette\Utils\ImageColor;
 
 class ProjectResource extends Resource
 {
@@ -38,6 +43,17 @@ class ProjectResource extends Resource
 
                 Textarea::make('description')
                     ->required(),
+
+                Select::make('project_category_id')
+                    ->relationship('project_category', 'name')
+                    ->preload()
+                    ->searchable()
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->maxLength(255)
+                            ->required()
+                    ])
+                    ->required(),
                     
                 Section::make('Upload URL')
                     ->schema([
@@ -58,7 +74,28 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->searchable(),
+
+                ImageColumn::make('thumbnail'),
+
+                TextColumn::make('description')->wrap()->limit(150),
+
+                TextColumn::make('project_category.name')
+                    ->badge()
+                    ->color(fn (string $state): string => match($state) {
+                        'Web Development' => 'primary',
+                        'UI/UX Design' => 'success',
+                        default => 'gray'
+                    })
+                    ->label('Project Category'),
+
+                TextColumn::make('url_github')
+
+                    ->label('Github URL'),
+
+                TextColumn::make('url_website')
+                    ->label('Website URL'),
+
             ])
             ->filters([
                 //

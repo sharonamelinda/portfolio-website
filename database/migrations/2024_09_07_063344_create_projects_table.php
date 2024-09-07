@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->string('thumbnail');
+            $table->foreignId('project_category_id')->constrained()->cascadeOnDelete();
             $table->string('url_github')->nullable();
             $table->string('url_website')->nullable();
             $table->timestamps();
