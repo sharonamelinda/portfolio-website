@@ -87,7 +87,8 @@ class ProjectResource extends Resource
                         'UI/UX Design' => 'success',
                         default => 'gray'
                     })
-                    ->label('Project Category'),
+                    ->label('Category')
+                    ->sortable(),
 
                 TextColumn::make('url_github')
 
