@@ -11,6 +11,9 @@ module.exports = {
         'poppins': ['Poppins', 'sans-serif'],
         'playfair': ['Playfair Display', 'serif'],
       },
+      colors: {
+        'dark-screen' : '#1e1e1e'
+      }
     },
   },
   plugins: [],

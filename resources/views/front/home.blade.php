@@ -52,7 +52,7 @@
                         <div class="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300"></div>
                     </div>
                     
-                    <a class="p-3 flex items-center text-xs md:py-2.5 rounded-lg bg-[#1e1e1e] text-white" href="{{ route('resume.download') }}">
+                    <a class="p-3 flex items-center text-xs md:py-2.5 rounded-lg bg-dark-screen text-white" href="{{ route('resume.download') }}">
                         <span>
                             <svg class="shrink-0 size-3 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -112,7 +112,7 @@
         <!-- ========== END HERO SECTION ========== -->
 
         <!-- Infinite Scroll - Open to work -->
-        <div class="max-w-full overflow-hidden px-12 bg-[#1e1e1e]">
+        <div class="max-w-full overflow-hidden px-12 bg-dark-screen">
           <div class="infinite-scroll-horizontal flex space-x-4">
             
             <p class="font-semibold text-sm p-4 text-white whitespace-nowrap">Open to work</p>
@@ -356,7 +356,7 @@
         </div>
 
         <!-- Hard Skill -->
-        <div class="w-full px-8 py-16 sm:px-6 mx-auto flex flex-col items-center justify-center bg-[#1e1e1e] text-white">
+        <div class="w-full px-8 py-16 sm:px-6 mx-auto flex flex-col items-center justify-center bg-dark-screen text-white">
 
           <!-- Title Header -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
@@ -537,7 +537,7 @@
         </div>
 
         <!-- Skillset -->
-        {{-- <div class="w-full py-8 bg-[#1e1e1e]">
+        {{-- <div class="w-full py-8 bg-dark-screen">
           <!-- Title -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-white">Skillset.</h2>
@@ -564,39 +564,42 @@
         <!-- End Skillset -->
 
         <!-- Latest Project -->
-        <div class="w-full px-8 py-8 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-[#1e1e1e] justify-center project-container" id="latest-project">
+        <div class="w-full px-8 py-8 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-dark-screen justify-center project-container" id="latest-project">
 
           <!-- Title Header -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-3xl md:leading-tight text-white">Latest Projects.</h2>
+
             {{-- Project Category --}}
             <ul class="flex flex-row gap-2 mt-4 text-white text-xs">
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
+                <a href="#">
                   Lorem
                 </a>
               </li>
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
+                <a href="#">
                   Lorem
                 </a>
               </li>
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
+                <a href="#">
                   Lorem
                 </a>
               </li>
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
+                <a href="#">
                   Lorem
                 </a>
               </li>
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
+                <a href="#">
                   Lorem
                 </a>
               </li>
             </ul>
+            {{-- End Project Category --}}
+
           </div>
           <!-- End Title -->
 
@@ -724,7 +727,7 @@
                     <hr class="my-4 mr-8">
 
                     <!-- Icon Block -->
-                    <div class="flex gap-x-7 my-2 mt-2">
+                    <div class="flex gap-x-7 my-2 mt-2 mr-8">
                         <div class="grow flex-col flex gap-4">
                             <div class="flex gap-4 p-8 rounded-lg hover:bg-gray-100">
                                 <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"></path><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"></path></svg>
@@ -745,7 +748,7 @@
                     <!-- End Icon Block -->
 
                     <!-- Icon Block -->
-                    <div class="flex gap-x-7 my-2 mt-2">
+                    <div class="flex gap-x-7 my-2 mt-2 mr-8">
                         <div class="grow flex-col flex gap-4">
                             <div class="flex gap-4 p-8 rounded-lg hover:bg-gray-100">
                                 <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -798,7 +801,7 @@
             </div>
         </div>
         
-        <footer class="mt-auto w-full py-8 px-4 sm:px-6 lg:px-8 mx-auto bg-[#1e1e1e]">
+        <footer class="mt-auto w-full py-8 px-4 sm:px-6 lg:px-8 mx-auto bg-dark-screen">
           <!-- Grid -->
           <div class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-5">
             
@@ -858,6 +861,5 @@
     </main>
 
     <script src="https://unpkg.com/preline/dist/preline.js"></script>
-    {{-- <script type="module" src="{{ asset('customjs/scroll-to.js') }}"></script> --}}
 </body>
 </html>
