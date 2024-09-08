@@ -9,7 +9,12 @@
   {{-- <link rel="icon" href="src/assets/images/profile/3d-avatar-profile.jpg" class="rounded-full"> --}}
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="{{ asset('customcss/main.css') }}">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
+
 </head>
 <body class="font-poppins">
 
@@ -39,9 +44,9 @@
               <div class="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
                 <div class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end md:gap-4 sm:gap-1 justify-items-center">
                     <!-- Navlist -->
-                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:outline-offset-1 focus:text-gray-500 md:py-4" href="#" aria-current="page">Home</a>
-                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:outline-offset-1 focus:text-gray-500 md:py-4" href="#">Projects</a>
-                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:outline-offset-1 focus:text-gray-500 md:py-4" href="#">Contact</a>
+                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:text-gray-500 md:py-4" href="#" aria-current="page">Home</a>
+                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:text-gray-500 md:py-4" href="#latest-project">Projects</a>
+                    <a class="p-2 flex items-center text-sm text-gray-800 hover:text-gray-600 focus:text-gray-500 md:py-4" href="#form-contact">Contact</a>
                     
                     <div class="my-2 md:my-0 md:mx-2">
                         <div class="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300"></div>
@@ -81,7 +86,7 @@
           <div class="py-4 mb-4">
             <ol class="flex items-center whitespace-nowrap">
               <li class="inline-flex items-center truncate" aria-current="page">
-                <a class="flex items-center lg:text-xl md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
+                <a class="flex items-center lg:text-lg md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
                   linkedin
                 </a>
                 <svg class="shrink-0 size-5 text-gray-400 mx-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -89,15 +94,7 @@
                 </svg>
               </li>
               <li class="inline-flex items-center">
-                <a class="flex items-center lg:text-xl md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
-                  github
-                  <svg class="shrink-0 size-5 text-gray-400 mx-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6 13L10 3" stroke="currentColor" stroke-linecap="round"></path>
-                  </svg>
-                </a>
-              </li>
-              <li class="inline-flex items-center">
-                <a class="flex items-center lg:text-xl md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
+                <a class="flex items-center lg:text-lg md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
                   behance
                   <svg class="shrink-0 size-5 text-gray-400 mx-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 13L10 3" stroke="currentColor" stroke-linecap="round"></path>
@@ -105,7 +102,7 @@
                 </a>
               </li>
               <li class="inline-flex items-center">
-                <a class="flex items-center lg:text-xl md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
+                <a class="flex items-center lg:text-lg md:text-ml text-gray-400 hover:text-gray-600 hover:underline" href="#">
                   dribble
                 </a>
               </li>
@@ -358,13 +355,248 @@
           </div>
         </div>
 
-        <!-- Card Blog -->
-        <div class="w-full px-8 py-8 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-[#1e1e1e] justify-center">
+        <!-- Hard Skill -->
+        <div class="w-full px-8 py-16 sm:px-6 mx-auto flex flex-col items-center justify-center bg-[#1e1e1e] text-white">
 
+          <!-- Title Header -->
+          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+            <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Hard Skill Proficiency</h2>
+
+            {{-- Project Category --}}
+            {{-- <ul class="flex flex-row gap-2 mt-4 text-xs">
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+            </ul> --}}
+          </div>
+          <!-- End Title -->
+
+          <!-- Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-2 content-center">
+            <!-- Icon Block -->
+            <div class="flex flex-col justify-center bg-[#363636] shadow-md rounded-xl text-center px-8 py-10 dark:border-neutral-700">
+              <!-- Icon -->
+              <div class="flex justify-center items-center rounded-lg mx-auto">
+                <img class="size-12" src="{{ asset('assets/images/icons/photoshop.png') }}" alt="Adobe Photoshop">
+              </div>
+              <!-- End Icon -->
+
+              <div class="mt-3">
+                <h3 class="text-sm sm:text-ml font-semibold">
+                  Adobe Photoshop
+                </h3>
+              </div>
+            </div>
+
+            <!-- Icon Block -->
+            <div class="flex flex-col justify-center border border-gray-50 rounded-xl text-center p-8 md:p-8">
+              <!-- Icon -->
+              <div class="flex justify-center items-center rounded-lg mx-auto">
+                <img class="size-12" src="{{ asset('assets/images/icons/photoshop.png') }}" alt="Adobe Photoshop">
+              </div>
+              <!-- End Icon -->
+
+              <div class="mt-3">
+                <h3 class="text-sm sm:text-ml font-semibold">
+                  Adobe Photoshop
+                </h3>
+              </div>
+            </div>
+                        
+          </div>
+          <!-- End Grid -->
+
+          <!-- <div class="p-4 my-4">
+            <a href="#" class="border py-2 px-4 text-white font-semibold rounded-md text-xs" id="loadMore">Load More</a>
+          </div> -->
+
+        </div>
+        <!-- Hard Skill -->
+
+        {{-- Work Edu --}}
+        <div class="w-full py-16 my-4">
+          <div class="max-w-[960px] grid lg:grid-cols-2 gap-16 px-4 mx-auto">
+
+            {{-- Work Experience --}}
+            <div class="">
+              <!-- Title -->
+              <div class="max-w-2xl mx-auto mb-6 lg:mb-8">
+                  <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Work Experience</h2>
+              </div>
+              <!-- End Title -->
+              <div class="flex flex-col space-y-6">
+
+                {{-- Work 1 --}}
+                <div class="p-6 border border-gray-200 rounded-lg dark:border-neutral-700">
+                  <div class="flex justify-between">
+                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
+                    <p class="text-xs text-gray-600 dark:text-neutral-400">
+                      208 - 2013
+                    </p>
+                  </div>
+                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
+                    Position / Role
+                  </p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
+                    Company's name
+                  </p>
+                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
+                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
+                  </p>
+                </div>
+
+                {{-- Work 2 --}}
+                <div class="p-6 shadow-lg rounded-lg">
+                  <div class="flex justify-between">
+                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
+                    <p class="text-xs text-gray-600 dark:text-neutral-400">
+                      208 - 2013
+                    </p>
+                  </div>
+                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
+                    Position / Role
+                  </p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
+                    Company's name
+                  </p>
+                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
+                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
+                  </p>
+                </div>
+
+                {{-- Work 3 --}}
+                <div class="p-6 rounded-lg bg-gray-100">
+                  <div class="flex justify-between">
+                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
+                    <p class="text-xs text-gray-600 dark:text-neutral-400">
+                      2012 - 2013
+                    </p>
+                  </div>
+                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
+                    Position / Role
+                  </p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
+                    Company's name
+                  </p>
+                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
+                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            {{-- Educations --}}
+            <div class="">
+              <!-- Title -->
+              <div class="max-w-2xl mx-auto mb-6 lg:mb-8">
+                  <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Education</h2>
+              </div>
+              <!-- End Title -->
+              <div class="flex flex-col space-x-4">
+                <div class="p-4 border border-gray-200 rounded-lg dark:border-neutral-700">
+                  <div class="flex justify-between">
+                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
+                    <p class="text-xs text-gray-600 dark:text-neutral-400">
+                      Agustus 2012 - <br>December 2013
+                    </p>
+                  </div>
+                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
+                    Degree
+                  </p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
+                    School's name
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Skillset -->
+        {{-- <div class="w-full py-8 bg-[#1e1e1e]">
           <!-- Title -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-white">Skillset.</h2>
+          </div>
+          <div class="max-w-[960px] md:flex gap-8 mx-auto md:px-8 px-8">
+            <div class="p-8 border rounded-lg w-full mb-4">
+              <p class="font-semibold text-xl text-white">Hard Skill.</p>
+              <ul class="mt-4 text-white font-extralight text-sm">
+                <li class="py-1">Figma</li>
+                <li class="py-1">Adobe Photoshop</li>
+                <li class="py-1">Adobe Illustrator</li>
+              </ul>
+            </div>
+            <div class="p-8 border rounded-lg w-full mb-4">
+              <p class="font-semibold text-xl text-white">Soft Skill.</p>
+              <ul class="mt-4 text-white font-extralight text-sm">
+                <li class="py-1">Figma</li>
+                <li class="py-1">Adobe Photoshop</li>
+                <li class="py-1">Adobe Illustrator</li>
+              </ul>
+            </div>
+          </div>
+        </div> --}}
+        <!-- End Skillset -->
+
+        <!-- Latest Project -->
+        <div class="w-full px-8 py-8 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-[#1e1e1e] justify-center project-container" id="latest-project">
+
+          <!-- Title Header -->
+          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-3xl md:leading-tight text-white">Latest Projects.</h2>
-            <!-- <div class="border-2 border-black w-16 rounded"></div> -->
+            {{-- Project Category --}}
+            <ul class="flex flex-row gap-2 mt-4 text-white text-xs">
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
+                <a href="">
+                  Lorem
+                </a>
+              </li>
+            </ul>
           </div>
           <!-- End Title -->
 
@@ -475,37 +707,10 @@
           </div> -->
 
         </div>
-        <!-- End Card Blog -->
-
-        <!-- Skillset -->
-        <div class="w-full py-8 bg-[#1e1e1e]">
-          <!-- Title -->
-          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-white">Skillset.</h2>
-          </div>
-          <div class="max-w-[960px] md:flex gap-8 mx-auto md:px-8 px-8">
-            <div class="p-8 border rounded-lg w-full mb-4">
-              <p class="font-semibold text-xl text-white">Hard Skill.</p>
-              <ul class="mt-4 text-white font-extralight text-sm">
-                <li class="py-1">Figma</li>
-                <li class="py-1">Adobe Photoshop</li>
-                <li class="py-1">Adobe Illustrator</li>
-              </ul>
-            </div>
-            <div class="p-8 border rounded-lg w-full mb-4">
-              <p class="font-semibold text-xl text-white">Soft Skill.</p>
-              <ul class="mt-4 text-white font-extralight text-sm">
-                <li class="py-1">Figma</li>
-                <li class="py-1">Adobe Photoshop</li>
-                <li class="py-1">Adobe Illustrator</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- End Skillset -->
+        <!-- End Latest Project -->
 
         <!-- Contact -->
-        <div class="w-full py-16">
+        <div class="w-full py-16" id="form-contact">
             <div class="max-w-[960px] md:flex lg:gap-4 mx-auto px-4 sm:px-8 items-center">
 
                 <div class="w-full flex flex-col">
@@ -653,6 +858,6 @@
     </main>
 
     <script src="https://unpkg.com/preline/dist/preline.js"></script>
-    {{-- <script src="{{ asset('customjs/contact-form.js') }}"></script> --}}
+    {{-- <script type="module" src="{{ asset('customjs/scroll-to.js') }}"></script> --}}
 </body>
 </html>

@@ -12,3 +12,8 @@
       animation: scroll-horizontal 20s linear infinite;
     }
 }
+
+.project-container{
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
