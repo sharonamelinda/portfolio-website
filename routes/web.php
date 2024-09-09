@@ -13,3 +13,8 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 
 Route::get('/projects', [FrontController::class, 'index'])->name('front.index');
 
+// routes/web.php
+Route::get('/projects/{slug?}', [FrontController::class, 'index'])->name('front.index');
+Route::get('/projects/partial/{slug?}', [FrontController::class, 'partial'])->name('front.partial');
+
+

@@ -9,11 +9,7 @@
   {{-- <link rel="icon" href="src/assets/images/profile/3d-avatar-profile.jpg" class="rounded-full"> --}}
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="{{ asset('customcss/main.css') }}">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
 
 </head>
 <body class="font-poppins">
@@ -22,10 +18,10 @@
 
         <!-- ========== HEADER ========== -->
         <header class="bg-white/60 backdrop-blur-lg flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full lg:mt-4">
-          <nav class="relative max-w-7xl w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <nav class="relative max-w-7xl w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-2">
             <!-- Logo w/ Collapse Button -->
             <div class="flex items-center justify-between">
-              <a class="flex-none font-semibold lg:text-4xl md:text-3xl font-playfair text-gray-700 focus:outline-none focus:opacity-80 uppercase" href="#" aria-label="Brand">gracie abrahams</a>
+              <a class="flex-none font-semibold lg:text-4xl text-3xl font-playfair text-gray-700 focus:outline-none focus:opacity-80 uppercase" href="#" aria-label="Brand">gracie abrahams</a>
 
               <!-- Collapse Button -->
               <div class="md:hidden">
@@ -78,8 +74,9 @@
 
           <!-- Introduction -->
           <div class="py-4 flex flex-col gap-3">
-            <p class="font-medium lg:text-3xl text-2xl">Hello! I'm Gracie Abrahams.</p>
-            <p class="font-bold lg:text-5xl text-3xl">I'm a freelance UI/UX Designer with a marketing background specializing in Shopify & Webflow.</p>
+            {{-- <p class="font-medium lg:text-3xl text-2xl">Hello! I'm Gracie Abrahams.</p> --}}
+            <p class="font-medium lg:text-3xl text-2xl">Hello! I'm <span id="typed-text"></span></p>
+            <p class="font-bold lg:text-5xl text-3xl">I'm a freelance Graphic Designer that interest in advertising, branding, photography, and visual editing.</p>
           </div>
 
           <!-- Link -->
@@ -477,25 +474,21 @@
             <h2 class="text-2xl font-bold md:text-3xl md:leading-tight text-white">Latest Projects.</h2>
 
             {{-- Project Category --}}
-            <ul class="flex flex-row gap-2 mt-4 text-white text-xs">
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="{{ route('front.index') }}">All</a>
-              </li>
+            {{-- <ul class="grid grid-cols-3 lg:flex lg:flex-row gap-2 mt-4 text-white text-xs" id="project-section">
               @forelse ($project_category as $category)
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="{{ route('front.index', ['category_id' => $category->id]) }}">
+                <a href="{{ route('front.index', ['category_id' => $category->id]) }}" class="category-link">
                   {{ $category->name }}
                 </a>
               </li>
               @empty
-                <p>
+                <p class="w-full text-center">
                   No Category
                 </p>
               @endforelse
 
-            </ul>
+            </ul> --}}
             {{-- End Project Category --}}
-
           </div>
           <!-- End Title -->
 
@@ -530,7 +523,7 @@
 
         <!-- Contact -->
         <div class="w-full py-16" id="form-contact">
-            <div class="max-w-[960px] md:flex lg:gap-4 mx-auto px-4 sm:px-8 items-center">
+            <div class="max-w-[960px] md:flex lg:gap-4 mx-auto px-8 items-center">
 
                 <div class="w-full flex flex-col">
                     <h2 class="text-3xl font-bold md:text-4xl md:leading-tight">
@@ -677,5 +670,15 @@
     </main>
 
     <script src="https://unpkg.com/preline/dist/preline.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      const typed = new Typed('#typed-text', {
+        strings: ['Gracie Abrahams'],
+        typeSpeed: 50,
+      });
+    </script>
+
+    <script src="{{ asset('customjs/fetch.js') }}"></script>
+
 </body>
 </html>
