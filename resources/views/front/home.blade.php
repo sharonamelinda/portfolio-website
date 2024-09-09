@@ -70,16 +70,16 @@
         <!-- ========== END HEADER ========== -->
 
         <!-- ========== HERO SECTION ========== -->
-        <section class="max-w-[960px] flex flex-col gap-4 p-8 mt-2">
+        <section class="max-w-[960px] flex flex-col gap-4 p-8 mt-2 min-h-screen justify-center">
           <!-- Profile Image -->
           <div class="py-2 flex justify-center">
-            <img src="{{ asset('assets/images/3d-avatar-profile.jpg') }}" alt="profile-photo" class="rounded-full w-36 p-1 border">
+            <img src="{{ asset('assets/images/3d-avatar-profile.jpg') }}" alt="profile-photo" class="rounded-full w-48 p-1 border">
           </div>
 
           <!-- Introduction -->
           <div class="py-4 flex flex-col gap-3">
-            <p class="font-medium lg:text-3xl sm:text-2xl">Hello! I'm Gracie Abrahams.</p>
-            <p class="font-bold lg:text-5xl sm:text-4xl">I'm a freelance UI/UX Designer with a marketing background specializing in Shopify & Webflow.</p>
+            <p class="font-medium lg:text-3xl text-2xl">Hello! I'm Gracie Abrahams.</p>
+            <p class="font-bold lg:text-5xl text-3xl">I'm a freelance UI/UX Designer with a marketing background specializing in Shopify & Webflow.</p>
           </div>
 
           <!-- Link -->
@@ -361,158 +361,116 @@
           <!-- Title Header -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Hard Skill Proficiency</h2>
-
-            {{-- Project Category --}}
-            {{-- <ul class="flex flex-row gap-2 mt-4 text-xs">
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="">
-                  Lorem
-                </a>
-              </li>
-            </ul> --}}
           </div>
           <!-- End Title -->
 
           <!-- Grid -->
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-2 content-center">
+
+            @forelse ($hardskill as $hardskill)
+
             <!-- Icon Block -->
-            <div class="flex flex-col justify-center bg-[#363636] shadow-md rounded-xl text-center px-8 py-10 dark:border-neutral-700">
+            <div class="flex flex-col justify-center bg-[#363636] rounded-xl text-center px-8 py-10 dark:border-neutral-700">
               <!-- Icon -->
               <div class="flex justify-center items-center rounded-lg mx-auto">
-                <img class="size-12" src="{{ asset('assets/images/icons/photoshop.png') }}" alt="Adobe Photoshop">
+                <img class="size-12" src="{{ Storage::url($hardskill->icon) }}" alt="{{ $hardskill->slug }}">
               </div>
               <!-- End Icon -->
-
               <div class="mt-3">
                 <h3 class="text-sm sm:text-ml font-semibold">
-                  Adobe Photoshop
+                  {{ $hardskill->name }}
                 </h3>
               </div>
             </div>
 
+            @empty
+              <p>No Hard Skill Found.</p>
+            @endforelse
+            
           </div>
           <!-- End Grid -->
-
-          <!-- <div class="p-4 my-4">
-            <a href="#" class="border py-2 px-4 text-white font-semibold rounded-md text-xs" id="loadMore">Load More</a>
-          </div> -->
-
         </div>
         <!-- Hard Skill -->
 
         {{-- Work Edu --}}
         <div class="w-full py-16 my-4">
-          <div class="max-w-[960px] grid lg:grid-cols-2 gap-16 px-4 mx-auto">
+          <div class="grid lg:grid-cols-3 gap-16 px-16 mx-auto">
 
             {{-- Work Experience --}}
-            <div class="">
+            <div class="lg:col-span-2">
               <!-- Title -->
-              <div class="max-w-2xl mx-auto mb-6 lg:mb-8">
+              <div class="mx-auto mb-6 lg:mb-8">
                   <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Work Experience</h2>
               </div>
               <!-- End Title -->
-              <div class="flex flex-col space-y-6">
 
-                {{-- Work 3 --}}
-                <div class="p-6 rounded-lg bg-gray-100 hover:bg-white drop-shadow-lg">
+              <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-6">
+
+                {{-- Work Experience List --}}
+                @forelse ($experience as $exp)
+
+                <div class="p-6 rounded-lg hover:bg-gray-100 bg-white drop-shadow-lg">
                   <div class="flex justify-between">
-                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
+                    <img class="size-8 w-auto mb-4" src="{{ Storage::url($exp->logo) }}" alt="Company Logo">
                     <p class="text-xs text-gray-600 dark:text-neutral-400 text-right">
-                      Jan 2012 - Jan 2013<br>
-                      <span>Internship</span>
+                      {{ $exp->start_month ? $exp->start_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->start_year)->format('Y') }} - {{ $exp->end_month ? $exp->end_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->end_year)->format('Y') }}
+                      <br>
+                      <span>{{ $exp->work_type->name }}</span>
                     </p>
                   </div>
-                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
-                    Position / Role
-                  </p>
-                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
-                    Company's name
-                  </p>
-                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
-                    Job Description; Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, fugiat amet explicabo accusamus ducimus maiores?
-                  </p>
+                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">{{ $exp->role }}</p>
+                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">{{ $exp->company_name }}</p>
+                  <p class="mt-4 text-xs text-gray-700 dark:text-neutral-400">{{ Str::limit($exp->job_description, 150) }}</p>
                 </div>
+
+                @empty
+                  <p>No Experience Found.</p>
+                @endforelse
 
               </div>
             </div>
 
             {{-- Educations --}}
-            <div class="">
+            <div>
               <!-- Title -->
               <div class="max-w-2xl mx-auto mb-6 lg:mb-8">
                   <h2 class="text-2xl font-bold md:text-3xl md:leading-tight">Education</h2>
               </div>
               <!-- End Title -->
-              <div class="flex flex-col space-x-4">
-                <div class="p-4 border border-gray-200 rounded-lg dark:border-neutral-700">
+              <div class="flex flex-col space-y-6">
+
+                @forelse ($education as $education)
+                <div class="p-6 rounded-lg hover:bg-gray-100 bg-white drop-shadow-lg">
                   <div class="flex justify-between">
-                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
-                    <p class="text-xs text-gray-600 dark:text-neutral-400">
-                      Agustus 2012 - <br>December 2013
+                    <img class="size-10 mb-4" src="{{ Storage::url($education->logo) }}" alt="Company Logo">
+                    <p class="text-xs text-gray-600 dark:text-neutral-400 text-right">
+                      {{ $exp->start_month ? $exp->start_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->start_year)->format('Y') }} - {{ $exp->end_month ? $exp->end_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->end_year)->format('Y') }}
+                      {{-- <br>
+                      <span>GPA: {{ $education->grade }}</span> --}}
                     </p>
                   </div>
                   <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
-                    Degree
+                    {{ $education->institution_name }}
                   </p>
                   <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
-                    School's name
+                    {{ $education->degree }}, {{ $education->major }}
+                  </p>
+                  <p class="mt-3 text-xs text-gray-600 dark:text-neutral-400">
+                    Grade: {{ $education->grade }}
                   </p>
                 </div>
+                @empty
+                  <p>No Education History</p>
+                @endforelse
+
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- Skillset -->
-        {{-- <div class="w-full py-8 bg-dark-screen">
-          <!-- Title -->
-          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-white">Skillset.</h2>
-          </div>
-          <div class="max-w-[960px] md:flex gap-8 mx-auto md:px-8 px-8">
-            <div class="p-8 border rounded-lg w-full mb-4">
-              <p class="font-semibold text-xl text-white">Hard Skill.</p>
-              <ul class="mt-4 text-white font-extralight text-sm">
-                <li class="py-1">Figma</li>
-                <li class="py-1">Adobe Photoshop</li>
-                <li class="py-1">Adobe Illustrator</li>
-              </ul>
-            </div>
-            <div class="p-8 border rounded-lg w-full mb-4">
-              <p class="font-semibold text-xl text-white">Soft Skill.</p>
-              <ul class="mt-4 text-white font-extralight text-sm">
-                <li class="py-1">Figma</li>
-                <li class="py-1">Adobe Photoshop</li>
-                <li class="py-1">Adobe Illustrator</li>
-              </ul>
-            </div>
-          </div>
-        </div> --}}
-        <!-- End Skillset -->
-
         <!-- Latest Project -->
-        <div class="w-full px-8 py-8 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-dark-screen justify-center project-container" id="latest-project">
+        <div class="w-full px-8 py-16 sm:px-6 mx-auto flex flex-col items-center min-h-screen bg-dark-screen justify-center project-container" id="latest-project">
 
           <!-- Title Header -->
           <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
@@ -521,30 +479,20 @@
             {{-- Project Category --}}
             <ul class="flex flex-row gap-2 mt-4 text-white text-xs">
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="#">
-                  Lorem
-                </a>
+                <a href="{{ route('front.index') }}">All</a>
               </li>
+              @forelse ($project_category as $category)
               <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="#">
-                  Lorem
+                <a href="{{ route('front.index', ['category_id' => $category->id]) }}">
+                  {{ $category->name }}
                 </a>
               </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="#">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="#">
-                  Lorem
-                </a>
-              </li>
-              <li class="px-2 py-1 border rounded-full hover:bg-white hover:text-black">
-                <a href="#">
-                  Lorem
-                </a>
-              </li>
+              @empty
+                <p>
+                  No Category
+                </p>
+              @endforelse
+
             </ul>
             {{-- End Project Category --}}
 
@@ -554,101 +502,21 @@
           <!-- Grid -->
           <div class="max-w-[960px] grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
+            @forelse ($latest_project as $latest)
             <!-- CARD -->
             <div class="flex flex-col bg-white border shadow-sm rounded-xl card">
-              <img class="w-full h-1/2 object-cover rounded-t-xl" src="https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Card Image">
+              <img class="w-full h-1/2 object-cover rounded-t-xl" src="{{ Storage::url($latest->thumbnail) }}" alt="Card Image">
               <!-- Card Content -->
               <div class="p-3 md:p-4">
-                <span class="inline-flex items-center py-1 px-4 rounded-full text-xs bg-gray-800 text-white mb-2">UI/UX</span>
-                <h3 class="text-lg font-bold text-gray-800">Lorem ipsum dolor sit.</h3>
-                <p class="mt-1 text-gray-500 text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi a sit aliquid ipsam nam unde cum mollitia dicta at corrupti necessitatibus quam, nisi quae molestiae non repellat odio sequi quasi.</p>
-                <div class="flex gap-2 mt-4">
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-white shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 30 30">
-                        <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-black shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path d="M21.721 12.752a9.711 9.711 0 0 0-.945-5.003 12.754 12.754 0 0 1-4.339 2.708 18.991 18.991 0 0 1-.214 4.772 17.165 17.165 0 0 0 5.498-2.477ZM14.634 15.55a17.324 17.324 0 0 0 .332-4.647c-.952.227-1.945.347-2.966.347-1.021 0-2.014-.12-2.966-.347a17.515 17.515 0 0 0 .332 4.647 17.385 17.385 0 0 0 5.268 0ZM9.772 17.119a18.963 18.963 0 0 0 4.456 0A17.182 17.182 0 0 1 12 21.724a17.18 17.18 0 0 1-2.228-4.605ZM7.777 15.23a18.87 18.87 0 0 1-.214-4.774 12.753 12.753 0 0 1-4.34-2.708 9.711 9.711 0 0 0-.944 5.004 17.165 17.165 0 0 0 5.498 2.477ZM21.356 14.752a9.765 9.765 0 0 1-7.478 6.817 18.64 18.64 0 0 0 1.988-4.718 18.627 18.627 0 0 0 5.49-2.098ZM2.644 14.752c1.682.971 3.53 1.688 5.49 2.099a18.64 18.64 0 0 0 1.988 4.718 9.765 9.765 0 0 1-7.478-6.816ZM13.878 2.43a9.755 9.755 0 0 1 6.116 3.986 11.267 11.267 0 0 1-3.746 2.504 18.63 18.63 0 0 0-2.37-6.49ZM12 2.276a17.152 17.152 0 0 1 2.805 7.121c-.897.23-1.837.353-2.805.353-.968 0-1.908-.122-2.805-.353A17.151 17.151 0 0 1 12 2.276ZM10.122 2.43a18.629 18.629 0 0 0-2.37 6.49 11.266 11.266 0 0 1-3.746-2.504 9.754 9.754 0 0 1 6.116-3.985Z" />
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                </div>
+                <a class="inline-flex items-center py-1 px-4 rounded-full text-xs bg-gray-800 text-white mb-2" href="#">{{ $latest->project_category->name }}</a>
+                <h3 class="text-lg font-bold text-gray-800">{{ $latest->name }}</h3>
+                <p class="mt-1 text-gray-500 text-xs">{{ Str::limit($latest->description, 100) }}</p>
               </div>
             </div>
             <!-- END CARD -->
-
-            <!-- CARD -->
-            <div class="flex flex-col bg-white border shadow-sm rounded-xl card">
-              <img class="w-full h-auto rounded-t-xl" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80" alt="Card Image">
-              <!-- Card Content -->
-              <div class="p-3 md:p-4">
-                <span class="inline-flex items-center py-1 px-4 rounded-full text-xs bg-gray-800 text-white mb-2">UI/UX</span>
-                <h3 class="text-lg font-bold text-gray-800">Lorem ipsum dolor sit amet.</h3>
-                <p class="mt-1 text-gray-500 text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum pariatur magni mollitia voluptatem illo facere, repudiandae a unde atque veritatis, velit, porro culpa voluptate tempora?</p>
-                <div class="flex gap-2 mt-4">
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-white shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 30 30">
-                        <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-black shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path d="M21.721 12.752a9.711 9.711 0 0 0-.945-5.003 12.754 12.754 0 0 1-4.339 2.708 18.991 18.991 0 0 1-.214 4.772 17.165 17.165 0 0 0 5.498-2.477ZM14.634 15.55a17.324 17.324 0 0 0 .332-4.647c-.952.227-1.945.347-2.966.347-1.021 0-2.014-.12-2.966-.347a17.515 17.515 0 0 0 .332 4.647 17.385 17.385 0 0 0 5.268 0ZM9.772 17.119a18.963 18.963 0 0 0 4.456 0A17.182 17.182 0 0 1 12 21.724a17.18 17.18 0 0 1-2.228-4.605ZM7.777 15.23a18.87 18.87 0 0 1-.214-4.774 12.753 12.753 0 0 1-4.34-2.708 9.711 9.711 0 0 0-.944 5.004 17.165 17.165 0 0 0 5.498 2.477ZM21.356 14.752a9.765 9.765 0 0 1-7.478 6.817 18.64 18.64 0 0 0 1.988-4.718 18.627 18.627 0 0 0 5.49-2.098ZM2.644 14.752c1.682.971 3.53 1.688 5.49 2.099a18.64 18.64 0 0 0 1.988 4.718 9.765 9.765 0 0 1-7.478-6.816ZM13.878 2.43a9.755 9.755 0 0 1 6.116 3.986 11.267 11.267 0 0 1-3.746 2.504 18.63 18.63 0 0 0-2.37-6.49ZM12 2.276a17.152 17.152 0 0 1 2.805 7.121c-.897.23-1.837.353-2.805.353-.968 0-1.908-.122-2.805-.353A17.151 17.151 0 0 1 12 2.276ZM10.122 2.43a18.629 18.629 0 0 0-2.37 6.49 11.266 11.266 0 0 1-3.746-2.504 9.754 9.754 0 0 1 6.116-3.985Z" />
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- END CARD -->
-
-            <!-- CARD -->
-            <div class="flex flex-col bg-white border shadow-sm rounded-xl card">
-              <img class="w-full h-auto rounded-t-xl" src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80" alt="Card Image">
-              <!-- Card Content -->
-              <div class="p-3 md:p-4">
-                <span class="inline-flex items-center py-1 px-4 rounded-full text-xs bg-gray-800 text-white mb-2">UI/UX</span>
-                <h3 class="text-lg font-bold text-gray-800">Lorem ipsum dolor.</h3>
-                <p class="mt-1 text-gray-500 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse eligendi eos laboriosam necessitatibus quod reprehenderit, ipsum neque, laborum ad modi, doloremque at repellendus distinctio obcaecati.</p>
-                <div class="flex gap-2 mt-4">
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-white shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 30 30">
-                        <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                  <a href="#">
-                    <!-- Icon -->
-                    <span class="inline-flex justify-center items-center rounded-full border border-gray-200 bg-white text-black shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path d="M21.721 12.752a9.711 9.711 0 0 0-.945-5.003 12.754 12.754 0 0 1-4.339 2.708 18.991 18.991 0 0 1-.214 4.772 17.165 17.165 0 0 0 5.498-2.477ZM14.634 15.55a17.324 17.324 0 0 0 .332-4.647c-.952.227-1.945.347-2.966.347-1.021 0-2.014-.12-2.966-.347a17.515 17.515 0 0 0 .332 4.647 17.385 17.385 0 0 0 5.268 0ZM9.772 17.119a18.963 18.963 0 0 0 4.456 0A17.182 17.182 0 0 1 12 21.724a17.18 17.18 0 0 1-2.228-4.605ZM7.777 15.23a18.87 18.87 0 0 1-.214-4.774 12.753 12.753 0 0 1-4.34-2.708 9.711 9.711 0 0 0-.944 5.004 17.165 17.165 0 0 0 5.498 2.477ZM21.356 14.752a9.765 9.765 0 0 1-7.478 6.817 18.64 18.64 0 0 0 1.988-4.718 18.627 18.627 0 0 0 5.49-2.098ZM2.644 14.752c1.682.971 3.53 1.688 5.49 2.099a18.64 18.64 0 0 0 1.988 4.718 9.765 9.765 0 0 1-7.478-6.816ZM13.878 2.43a9.755 9.755 0 0 1 6.116 3.986 11.267 11.267 0 0 1-3.746 2.504 18.63 18.63 0 0 0-2.37-6.49ZM12 2.276a17.152 17.152 0 0 1 2.805 7.121c-.897.23-1.837.353-2.805.353-.968 0-1.908-.122-2.805-.353A17.151 17.151 0 0 1 12 2.276ZM10.122 2.43a18.629 18.629 0 0 0-2.37 6.49 11.266 11.266 0 0 1-3.746-2.504 9.754 9.754 0 0 1 6.116-3.985Z" />
-                      </svg>
-                    </span>
-                    <!-- End Icon -->
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- END CARD -->
+            @empty
+              <p class="text-center text-white font-bold text-3xl">No Project</p>
+            @endforelse
 
           </div>
           <!-- End Grid -->

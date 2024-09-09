@@ -10,3 +10,6 @@ Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/resume/download', [ResumeController::class, 'download'])->name('resume.download');
 
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/projects', [FrontController::class, 'index'])->name('front.index');
+
