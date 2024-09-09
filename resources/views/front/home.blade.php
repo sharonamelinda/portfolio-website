@@ -410,21 +410,6 @@
               </div>
             </div>
 
-            <!-- Icon Block -->
-            <div class="flex flex-col justify-center border border-gray-50 rounded-xl text-center p-8 md:p-8">
-              <!-- Icon -->
-              <div class="flex justify-center items-center rounded-lg mx-auto">
-                <img class="size-12" src="{{ asset('assets/images/icons/photoshop.png') }}" alt="Adobe Photoshop">
-              </div>
-              <!-- End Icon -->
-
-              <div class="mt-3">
-                <h3 class="text-sm sm:text-ml font-semibold">
-                  Adobe Photoshop
-                </h3>
-              </div>
-            </div>
-                        
           </div>
           <!-- End Grid -->
 
@@ -448,50 +433,13 @@
               <!-- End Title -->
               <div class="flex flex-col space-y-6">
 
-                {{-- Work 1 --}}
-                <div class="p-6 border border-gray-200 rounded-lg dark:border-neutral-700">
-                  <div class="flex justify-between">
-                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
-                    <p class="text-xs text-gray-600 dark:text-neutral-400">
-                      208 - 2013
-                    </p>
-                  </div>
-                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
-                    Position / Role
-                  </p>
-                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
-                    Company's name
-                  </p>
-                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
-                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
-                  </p>
-                </div>
-
-                {{-- Work 2 --}}
-                <div class="p-6 shadow-lg rounded-lg">
-                  <div class="flex justify-between">
-                    <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
-                    <p class="text-xs text-gray-600 dark:text-neutral-400">
-                      208 - 2013
-                    </p>
-                  </div>
-                  <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
-                    Position / Role
-                  </p>
-                  <p class="mt-1 text-xs text-gray-600 dark:text-neutral-400">
-                    Company's name
-                  </p>
-                  <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
-                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
-                  </p>
-                </div>
-
                 {{-- Work 3 --}}
-                <div class="p-6 rounded-lg bg-gray-100">
+                <div class="p-6 rounded-lg bg-gray-100 hover:bg-white drop-shadow-lg">
                   <div class="flex justify-between">
                     <img class="size-10 mb-2" src="{{ asset('assets/images/logo/unilever-logo-1.png') }}" alt="Company Logo">
-                    <p class="text-xs text-gray-600 dark:text-neutral-400">
-                      2012 - 2013
+                    <p class="text-xs text-gray-600 dark:text-neutral-400 text-right">
+                      Jan 2012 - Jan 2013<br>
+                      <span>Internship</span>
                     </p>
                   </div>
                   <p class="font-semibold text-sm text-gray-800 dark:text-neutral-200">
@@ -501,7 +449,7 @@
                     Company's name
                   </p>
                   <p class="mt-2 text-xs text-gray-700 dark:text-neutral-400">
-                    The company has high expectations and using OKRs there is a mutual understanding of expectations and performance.
+                    Job Description; Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, fugiat amet explicabo accusamus ducimus maiores?
                   </p>
                 </div>
 

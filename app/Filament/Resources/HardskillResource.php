@@ -2,22 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SkillCategoryResource\Pages;
-use App\Filament\Resources\SkillCategoryResource\RelationManagers;
-use App\Models\SkillCategory;
+use App\Filament\Resources\HardskillResource\Pages;
+use App\Filament\Resources\HardskillResource\RelationManagers;
+use App\Models\Hardskill;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SkillCategoryResource extends Resource
+class HardskillResource extends Resource
 {
-    protected static ?string $model = SkillCategory::class;
+    protected static ?string $model = Hardskill::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,7 +28,8 @@ class SkillCategoryResource extends Resource
         return $form
             ->schema([
                 //
-                TextInput::make('name')
+                TextInput::make('name')->maxLength(255)->required(),
+                FileUpload::make('icon')->image()->required()
             ]);
     }
 
@@ -37,6 +40,7 @@ class SkillCategoryResource extends Resource
                 //
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('slug'),
+                ImageColumn::make('icon')
             ])
             ->filters([
                 //
@@ -61,9 +65,9 @@ class SkillCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSkillCategories::route('/'),
-            'create' => Pages\CreateSkillCategory::route('/create'),
-            'edit' => Pages\EditSkillCategory::route('/{record}/edit'),
+            'index' => Pages\ListHardskills::route('/'),
+            'create' => Pages\CreateHardskill::route('/create'),
+            'edit' => Pages\EditHardskill::route('/{record}/edit'),
         ];
     }
 }

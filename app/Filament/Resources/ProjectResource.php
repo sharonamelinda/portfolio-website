@@ -41,8 +41,7 @@ class ProjectResource extends Resource
                     ->image()
                     ->required(),
 
-                Textarea::make('description')
-                    ->required(),
+                Textarea::make('description'),
 
                 Select::make('project_category_id')
                     ->relationship('project_category', 'name')
@@ -54,19 +53,12 @@ class ProjectResource extends Resource
                             ->required()
                     ])
                     ->required(),
-                    
-                Section::make('Upload URL')
-                    ->schema([
-                        TextInput::make('url_github')
-                            ->label('Github URL')
-                            ->url()
-                            ->nullable(),
                         
-                        TextInput::make('url_website')
-                            ->label('Website URL')
-                            ->url()
-                            ->nullable(),
-                    ])
+                    TextInput::make('url_website')
+                        ->label('Website URL')
+                        ->url()
+                        ->nullable(),
+
             ]);
     }
 
@@ -82,17 +74,8 @@ class ProjectResource extends Resource
 
                 TextColumn::make('project_category.name')
                     ->badge()
-                    ->color(fn (string $state): string => match($state) {
-                        'Web Development' => 'primary',
-                        'UI/UX Design' => 'success',
-                        default => 'gray'
-                    })
                     ->label('Category')
                     ->sortable(),
-
-                TextColumn::make('url_github')
-
-                    ->label('Github URL'),
 
                 TextColumn::make('url_website')
                     ->label('Website URL'),

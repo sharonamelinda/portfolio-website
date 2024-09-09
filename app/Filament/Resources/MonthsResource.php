@@ -4,21 +4,20 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Skill;
+use App\Models\Month;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\SkillResource\Pages;
+use App\Filament\Resources\MonthsResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SkillResource\RelationManagers;
+use App\Filament\Resources\MonthsResource\RelationManagers;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 
-class SkillResource extends Resource
+class MonthsResource extends Resource
 {
-    protected static ?string $model = Skill::class;
+    protected static ?string $model = Month::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,13 +25,8 @@ class SkillResource extends Resource
     {
         return $form
             ->schema([
-                //
-                TextInput::make('name')->maxLength(255)->required(),
-                Select::make('skill_category_id')
-                    ->relationship('skill_category', 'name')
-                    ->required()
-                    ->preload()
-                    ->searchable(),
+                TextInput::make('name')->maxLength(20)->required(),
+                TextInput::make('abbr_name')->maxLength(4)->required()
             ]);
     }
 
@@ -41,15 +35,7 @@ class SkillResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->searchable(),
-                TextColumn::make('slug'),
-                TextColumn::make('skill_category.name')
-                    ->badge()
-                    ->color(fn (string $state): string => match($state) {
-                        'Soft Skill' => 'primary',
-                        'Hard Skill' => 'success',
-                    })
-                    ->label('Category')
-                    ->sortable(),
+                TextColumn::make('abbr_name')->searchable()
             ])
             ->filters([
                 //
@@ -74,9 +60,9 @@ class SkillResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSkills::route('/'),
-            'create' => Pages\CreateSkill::route('/create'),
-            'edit' => Pages\EditSkill::route('/{record}/edit'),
+            'index' => Pages\ListMonths::route('/'),
+            'create' => Pages\CreateMonths::route('/create'),
+            'edit' => Pages\EditMonths::route('/{record}/edit'),
         ];
     }
 }
