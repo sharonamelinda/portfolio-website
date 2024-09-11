@@ -9,7 +9,7 @@
     }
 
     .infinite-scroll-horizontal {
-      animation: scroll-horizontal 20s linear infinite;
+      animation: scroll-horizontal 10s linear infinite;
     }
 }
 
