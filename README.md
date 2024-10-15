@@ -78,14 +78,13 @@ Preline is integrated into the project for UI elements like buttons, modals, and
 
 
 
-## Hak Cipta dan Persyaratan Penggunaan
+## Copyright and Usage Terms
 
-Hak cipta © 2024 Sharon Amelinda. Semua hak dilindungi undang-undang.
+Copyright © 2024 Sharon Amelinda. All rights reserved.
 
-Proyek ini dilindungi oleh hak cipta. Anda tidak diperbolehkan untuk menggunakan, menyalin, memodifikasi, atau mendistribusikan proyek ini tanpa izin tertulis dari pemilik hak cipta.
+This project is protected by copyright. You are not permitted to use, copy, modify, or distribute this project without explicit written permission from the copyright holder.
 
-Jika Anda ingin menggunakan proyek ini untuk keperluan apa pun, baik untuk keperluan pribadi maupun komersial, **harap hubungi saya** di [sharonamelindaa@gmail.com] untuk mendapatkan izin.
+If you wish to use this project for any purpose, whether personal or commercial, **please contact me** at [sharonamelindaa@gmail.com] to obtain permission.
 
-Terima kasih atas perhatian Anda.
-
+Thank you for your understanding.
 
