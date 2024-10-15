@@ -69,7 +69,7 @@
         <section class="max-w-[960px] flex flex-col gap-4 p-8 min-h-screen justify-center">
           <!-- Profile Image -->
           <div class="py-2 flex justify-center">
-            <img src="{{ asset('assets/images/3d-avatar-profile.jpg') }}" alt="profile-photo" class="rounded-full w-48 p-1 border">
+            <img loading="lazy" src="{{ asset('assets/images/3d-avatar-profile.jpg') }}" alt="profile-photo" class="rounded-full w-48 p-1 border">
           </div>
 
           <!-- Introduction -->
@@ -252,7 +252,7 @@
             <div class="flex flex-col justify-center bg-[#363636] rounded-xl text-center px-8 py-10 dark:border-neutral-700">
               <!-- Icon -->
               <div class="flex justify-center items-center rounded-lg mx-auto">
-                <img class="size-12" src="{{ Storage::url($hardskill->icon) }}" alt="{{ $hardskill->slug }}">
+                <img loading="lazy" class="size-12" src="{{ Storage::url($hardskill->icon) }}" alt="{{ $hardskill->slug }}">
               </div>
               <!-- End Icon -->
               <div class="mt-3">
@@ -290,7 +290,7 @@
 
                 <div class="p-6 rounded-lg hover:bg-gray-100 bg-white drop-shadow-lg">
                   <div class="flex justify-between">
-                    <img class="size-8 w-auto mb-4" src="{{ Storage::url($exp->logo) }}" alt="Company Logo">
+                    <img loading="lazy" class="size-8 w-auto mb-4" src="{{ Storage::url($exp->logo) }}" alt="Company Logo">
                     <p class="text-xs text-gray-600 dark:text-neutral-400 text-right">
                       {{ $exp->start_month ? $exp->start_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->start_year)->format('Y') }} - {{ $exp->end_month ? $exp->end_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->end_year)->format('Y') }}
                       <br>
@@ -321,7 +321,7 @@
                 @forelse ($education as $education)
                 <div class="p-6 rounded-lg hover:bg-gray-100 bg-white drop-shadow-lg">
                   <div class="flex justify-between">
-                    <img class="size-10 mb-4" src="{{ Storage::url($education->logo) }}" alt="Company Logo">
+                    <img loading="lazy" class="size-10 mb-4" src="{{ Storage::url($education->logo) }}" alt="Company Logo">
                     <p class="text-xs text-gray-600 dark:text-neutral-400 text-right">
                       {{ $exp->start_month ? $exp->start_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->start_year)->format('Y') }} - {{ $exp->end_month ? $exp->end_month->abbr_name : 'No Month' }} {{ \Carbon\Carbon::parse($exp->end_year)->format('Y') }}
                       {{-- <br>
@@ -363,7 +363,7 @@
             @forelse ($latest_project as $latest)
             <!-- CARD -->
             <div class="flex flex-col bg-white border shadow-sm rounded-xl card">
-              <img class="w-full h-1/2 object-cover rounded-t-xl" src="{{ Storage::url($latest->thumbnail) }}" alt="Card Image">
+              <img loading="lazy" class="w-full h-1/2 object-cover rounded-t-xl" src="{{ Storage::url($latest->thumbnail) }}" alt="Card Image">
               <!-- Card Content -->
               <div class="p-3 md:p-4">
                 <a class="inline-flex items-center py-1 px-4 rounded-full text-xs bg-gray-800 text-white mb-2" href="#">{{ $latest->project_category->name }}</a>
@@ -538,7 +538,7 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
       const typed = new Typed('#typed-text', {
-        strings: ['Gracie Abrahams'],
+        strings: ['Gracie Abrahams.'],
         typeSpeed: 50,
       });
     </script>
